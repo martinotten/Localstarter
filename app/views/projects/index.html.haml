@@ -1,3 +1,9 @@
+%h2 Top projects around 'Cologne, Germany'
+
+%script{src: "http://www.openlayers.org/api/OpenLayers.js"}
+
+#basicMap
+
 %ul
   - @projects.each do |p|
     %li= link_to(p.title, p)

@@ -17,3 +17,4 @@
 # Ignore RSPEC file.
 /.rspec
 
+.DS_Store
