@@ -1,0 +1,12 @@
+= semantic_form_for @project do |f|
+  = f.inputs do
+    = f.input :title
+    = f.input :description
+    = f.input :address
+    = f.input :amount
+    = f.input :latitude
+    = f.input :longitude
+    = f.input :valid_until
+  = f.actions do
+    = f.action :submit, :as => :button
+    = f.action :cancel, :as => :link

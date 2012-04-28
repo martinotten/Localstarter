@@ -2,9 +2,18 @@
   %head
     %title = 'Localstarter'
     = stylesheet_link_tag 'application', :media => 'all'
+    = stylesheet_link_tag 'formtastic', 'my_formtastic_changes' %>
+    /[if IE 6]
+    != "<--"
+    = stylesheet_link_tag 'formtastic_ie6'
+    != "-->"
+    /[if IE 7]
+    != "<!--"
+    = stylesheet_link_tag 'formtastic_ie7'
+    != "-->"
     = javascript_include_tag :defaults
     = csrf_meta_tags
-   
+
   %body
     %h1 Localstarter
     = yield

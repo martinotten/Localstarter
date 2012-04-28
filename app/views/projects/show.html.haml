@@ -1,0 +1,13 @@
+%h1= @project.title
+
+%p= @project.description
+
+%dl
+  %dt User
+  %dd= @project.user.name
+  %dt Location
+  %dd= @project.address
+  %dt Amount
+  %dd= @project.amount
+  %dt Valid until
+  %dd= @project.valid_until
