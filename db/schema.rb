@@ -18,14 +18,15 @@ ActiveRecord::Schema.define(:version => 20120428122823) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+ActiveRecord::Schema.define(:version => 20120428133503) do
 
   create_table "projects", :force => true do |t|
     t.integer  "user_id"
     t.string   "title"
     t.text     "description"
     t.string   "address"
-    t.decimal  "geo_lng",     :precision => 16, :scale => 13
-    t.decimal  "geo_lat",     :precision => 16, :scale => 13
+    t.decimal  "longitude",   :precision => 16, :scale => 13
+    t.decimal  "latitude",    :precision => 16, :scale => 13
     t.decimal  "amount",      :precision => 16, :scale => 2
     t.datetime "valid_until"
     t.datetime "created_at",                                  :null => false
