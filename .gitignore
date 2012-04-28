@@ -14,4 +14,7 @@
 /log/*.log
 /tmp
 
+# Ignore RSPEC file.
+/.rspec
+
 Gemfile.lock
