@@ -1,9 +1,11 @@
 %html
   %head
     %title= 'Localstarter - fund your commune'    
-      = stylesheet_link_tag 'application', :media => 'all'
-      = stylesheet_link_tag 'formtastic', 'my_formtastic_changes'
-	  = csrf_meta_tags
+    = stylesheet_link_tag 'application', :media => 'all'
+    = stylesheet_link_tag 'formtastic', 'my_formtastic_changes'
+    = csrf_meta_tags
+    = javascript_include_tag :application
+
   %body
     %div.container
       %header#top-navigation.span12.prepend-top.append-bottom
@@ -11,5 +13,3 @@
           %h1 Localstarter	
         %div.search.span6 
   = yield
-  = javascript_include_tag :application
-	

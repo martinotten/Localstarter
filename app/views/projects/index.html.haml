@@ -1,9 +1,23 @@
-%h2 Top projects around 'Cologne, Germany'
-
 %script{ src: "http://www.openlayers.org/api/OpenLayers.js" }
 
-#basicMap
-
-%ul
-  - @projects.each do |p|
-    %li= link_to(p.title, p)
+%h2 'Cologne, Germany', you can never have enough Sauerkraut…
+.row
+  .span8
+    #basicMap
+  .span4
+    %h3 Projects around you
+    %ul.projects
+      - @projects.each do |p|
+        %li.project
+          %h4= link_to(p.title, p)
+          %p= p.description
+          %ul
+            %li
+              %strong= "funded"
+              %span= "20%"
+            %li
+              %strong= "pledged"
+              %span= "4.672€"
+            %li
+              %strong= "days to go"
+              %span= "14"
