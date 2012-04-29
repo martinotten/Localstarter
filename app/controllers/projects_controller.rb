@@ -1,9 +1,8 @@
 class ProjectsController < ApplicationController
   def index
     @projects = []
+    @user_location = user_location || []
     
-    logger.debug user_location
-    puts user_location
     if user_location
       @projects = Project.near(user_location, 20).limit(10)
     else

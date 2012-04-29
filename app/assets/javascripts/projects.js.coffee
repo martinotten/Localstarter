@@ -7,7 +7,7 @@ success = (position) ->
     mapnik = new OpenLayers.Layer.OSM()
     fromProjection = new OpenLayers.Projection("EPSG:4326")
     toProjection = new OpenLayers.Projection("EPSG:900913")
-    position = new OpenLayers.LonLat(position.coords.longitude, position.coords.latitude).transform(fromProjection, toProjection)
+    position = new OpenLayers.LonLat(position[1], position[0]).transform(fromProjection, toProjection)
     zoom = 13
     map.addLayer mapnik
     map.setCenter position, zoom
@@ -16,11 +16,8 @@ error = (msg) ->
   console.log msg
 
 initGeo = ->
-  if navigator.geolocation
-    navigator.geolocation.getCurrentPosition(success, error)
-  else
-    error 'not supported'
-  
+  position = $.parseJSON $("script#data-user-location").html()
+  success position
 
 $(initGeo)
   
