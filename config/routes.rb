@@ -57,4 +57,6 @@ Localstarter::Application.routes.draw do
   # match ':controller(/:action(/:id))(.:format)'
 
   resources :projects
+
+  match "projects/:id/back" => "projects#back", :as => "back_project"
 end

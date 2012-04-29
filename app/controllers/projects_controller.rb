@@ -33,4 +33,17 @@ class ProjectsController < ApplicationController
       render :action => "new"
     end
   end
+
+  def back
+    @project = Project.find(params[:id])
+    back = Back.new
+    back.project = Project.find(params[:id])
+    back.user = User.find(1)
+    back.amount = 100
+    if back.save
+      redirect_to @project
+    else
+      render :action => "show"
+    end
+  end
 end
