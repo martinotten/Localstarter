@@ -18,3 +18,5 @@
 /.rspec
 
 .DS_Store
+
+app/views/layouts/application.html.haml
