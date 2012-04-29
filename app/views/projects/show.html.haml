@@ -4,23 +4,27 @@
 
 %section.project-status
   %div#status.span6
-    %h3 Project Closing
-    %h2= distance_of_time_in_words(DateTime.now, @project.valid_until)
+    %h2 Project Closing
+    %h3
+      = distance_of_time_in_words(DateTime.now, @project.valid_until)
   %div#fundraising.span6
-    %h3 Funds raised
-    %h2= number_to_currency(@project.backed_amount, :unit => "€", :format => "%n%u") + " of " + number_to_currency(@project.amount, :unit => "€", :format => "%n%u") + " (" + @project.backed_percent.to_s + "%)"
+    %h2 Funds raised
+    %h3
+      = number_to_currency(@project.backed_amount, :unit => "€", :format => "%n%u") + " of " + number_to_currency(@project.amount, :unit => "€", :format => "%n%u") + " (" + @project.backed_percent.to_s + "%)"
   %div
-    %h3 Location
-    %h2= @project.address
+    %h2 Location
+    %h3
+      = @project.address
 
   %section#fundraiser
     %p About the fundraiser
-    %div= @project.user.name
+    %div
+      = @project.user.name
     %img{ :src => "http://placehold.it/150x150", :width => 150, :height => 150 }
 
 %seciont#pledges
   - if @project.has_pledges?
-    %h3 Pledges
+    %h2 Pledges
     - @project.pledges.each do |pledge|
       %div.pledge
         %strong.amount= "Pledge " + pledge.amount.to_s + "€ or more"
