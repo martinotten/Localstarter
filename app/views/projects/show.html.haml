@@ -8,7 +8,7 @@
     %h2= distance_of_time_in_words(DateTime.now, @project.valid_until)
   %div#fundraising.span6
     %h3 Funds raised
-    %h2= @project.backed_amount.to_s + " (" + @project.backed_percent.to_s + "%)"
+    %h2= number_to_currency(@project.backed_amount, :unit => "€", :format => "%n%u") + " of " + number_to_currency(@project.amount, :unit => "€", :format => "%n%u") + " (" + @project.backed_percent.to_s + "%)"
   %div
     %h3 Location
     %h2= @project.address
