@@ -24,7 +24,7 @@
     - @project.pledges.each do |pledge|
       %div.pledge
         %strong.amount= "Pledge " + pledge.amount.to_s + "€ or more"
-        %p.backers= pledge.backers.length.to_s + " backers" + (pledge.sold_out? ? " (SOLD OUT)" : "")
+        %p.backers= (pledge.has_backers? ? pledge.backers.length.to_s : "0") + " backers" + (pledge.sold_out? ? " (SOLD OUT)" : "")
         %p.description= pledge.description
 
 %section#actions
