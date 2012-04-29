@@ -5,19 +5,24 @@
   .span8
     #basicMap
   .span4
-    %h3 Projects around you
-    %ul.projects
-      - @projects.each do |p|
-        %li.project
-          %h4= link_to(p.title, p)
-          %p= p.description
-          %ul
-            %li
-              %strong= "funded"
-              %span= "20%"
-            %li
-              %strong= "pledged"
-              %span= "4.672€"
-            %li
-              %strong= "days to go"
-              %span= "14"
+    - if @projects.length > 0
+      %h3 Projects around you
+      %ul.projects
+        - @projects.each do |p|
+          %li.project
+            %h4= link_to(p.title, p)
+            %p= p.summary
+            %ul
+              %li
+                %strong= "funded"
+                %span= "20%"
+              %li
+                %strong= "pledged"
+                %span= "4.672€"
+              %li
+                %strong= "days to go"
+                %span= "14"
+      - else
+        %h3 No projects anywhere around you…
+        =link_to "Why don't you start one yourself?", controller: "projects", action: "new"
+        

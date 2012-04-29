@@ -1,6 +1,15 @@
 class ProjectsController < ApplicationController
   def index
-    @projects = Project.all
+    @projects = []
+    
+    logger.debug user_location
+    puts user_location
+    if user_location
+      @projects = Project.near(user_location, 20).limit(10)
+    else
+      @projects = Project.all.limit(10)
+    end
+    #@projects = Project.all
   end
 
   def show
