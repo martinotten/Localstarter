@@ -27,6 +27,15 @@ ActiveRecord::Schema.define(:version => 20120429105224) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "pledges", :force => true do |t|
+    t.integer  "project_id"
+    t.decimal  "amount",      :precision => 16, :scale => 2
+    t.string   "description"
+    t.integer  "limit"
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+  end
+
   create_table "projects", :force => true do |t|
     t.integer  "user_id"
     t.string   "title"

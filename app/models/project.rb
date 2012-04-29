@@ -11,4 +11,31 @@ class Project < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
   has_many :backs
+  has_many :pledges
+
+  def backers
+    backers = []
+    self.backs.each do |back|
+      if not backers.index(back.user)
+        backers.push(back.user)
+      end
+    end
+    return backers
+  end
+
+  def backed_amount
+    amount = 0
+    self.backs.each do |back|
+      amount += back.amount
+    end
+    return amount
+  end
+
+  def backed_percent
+    return (self.backed_amount / self.amount) * 100
+  end
+
+  def has_pledges?
+    return self.pledges.length > 0
+  end
 end

@@ -8,17 +8,27 @@
     %h2= distance_of_time_in_words(DateTime.now, @project.valid_until)
   %div#fundraising.span6
     %h3 Funds raised
-    %h2= @project.amount
+    %h2= @project.backed_amount.to_s + " (" + @project.backed_percent.to_s + "%)"
   %div
     %h3 Location
     %h2= @project.address
 
-  %section#fundraiser About the fundraiser
-  %img{:src => "http://placehold.it/150x150", :width => 150, :height => 150}
-    %dd= @project.user.name
+  %section#fundraiser
+    %p About the fundraiser
+    %div= @project.user.name
+    %img{ :src => "http://placehold.it/150x150", :width => 150, :height => 150 }
 
+%seciont#pledges
+  - if @project.has_pledges?
+    %h3 Pledges
+    - @project.pledges.each do |pledge|
+      %div.pledge
+        %strong.amount= "Pledge " + pledge.amount.to_s + "€ or more"
+        %p.backers= pledge.backers.length.to_s + " backers" + (pledge.sold_out? ? " (SOLD OUT)" : "")
+        %p.description= pledge.description
 
-%div.btn-group
-  %button.btn= link_to("Edit Project", :edit_project)
-  %button.btn=link_to("Back this project", :back_project, :confirm => "Do you really want to back this project with 100 Euro?")
-  %button.btn=link_to("Go back to project list", :projects)
+%section#actions
+  %div.btn-group
+    %button.btn= link_to("Edit Project", :edit_project)
+    %button.btn= link_to("Back this project", :back_project, :confirm => "Do you really want to back this project with 100 Euro?")
+    %button.btn= link_to("Go back to project list", :projects)
