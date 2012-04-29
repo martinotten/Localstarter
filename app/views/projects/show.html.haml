@@ -4,17 +4,26 @@
 
 %section.project-status
   %div#status.span6
-    %p=@project.valid_until
+    %h3 Project Closing
+    %h2=@project.valid_until
+  %div#fundraising.span6
+    %h3 Funds raised
+    %h2=@project.amount
+    
+  %div 
 %dl
-  %dt User
-  %dd= @project.user.name
-  %dt Location
+  %h3 Location
   %dd= @project.address
-  %dt Amount
-  %dd= @project.amount
-  %dt Valid until
+  %h3 Valid until
   %dd= @project.valid_until
 
-%p= link_to("Edit project", :edit_project)
-%p= link_to("Back this project", :back_project, :confirm => "Do you really want to back this project with 100 Euro?")
-%p= link_to("Go back to project list", :projects)
+
+  %section#fundraiser About the fundraiser
+  %img{:src => "http://placehold.it/150x150", :width => 150, :height => 150}
+    %dd= @project.user.name
+
+
+%div.btn-group
+  %button.btn= link_to("Edit Project", :edit_project)
+  %button.btn=link_to("Back this project", :back_project, :confirm => "Do you really want to back this project with 100 Euro?")
+  %button.btn=link_to("Go back to project list", :projects)
