@@ -5,7 +5,7 @@ class Pledge < ActiveRecord::Base
 
   def backers
     backers = []
-    self.backs.each do |back|
+    backs.each do |back|
       if not backers.index(back.user)
         backers.push(back.user)
       end
@@ -15,8 +15,8 @@ class Pledge < ActiveRecord::Base
 
   def backs
     backs = []
-    self.project.backs.each do |back|
-      if back.amount >= self.amount
+    project.backs.each do |back|
+      if back.amount >= amount
         backs.push(back)
       end
     end
@@ -24,6 +24,10 @@ class Pledge < ActiveRecord::Base
   end
 
   def sold_out?
-    return backers.length >= self.limit
+    return has_backers? && backers.length >= limit
+  end
+
+  def has_backers?
+    return backers.length > 0
   end
 end
