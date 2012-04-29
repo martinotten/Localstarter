@@ -2,6 +2,9 @@
 
 %p!= @project.description
 
+%section.project-status
+  %div#status.span6
+    %p=@project.valid_until
 %dl
   %dt User
   %dd= @project.user.name
